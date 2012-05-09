@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50b" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="FeedType" representedClassName="FeedType" syncable="YES">
+        <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="YES" indexed="YES" syncable="YES"/>
+        <attribute name="id" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+        <attribute name="label" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="selected" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="feed_type" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="Market" representedClassName="Market" syncable="YES">
+        <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="YES" indexed="YES" syncable="YES"/>
+        <attribute name="id" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="selected" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="markets" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="created_ts" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="full_path" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="id" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+        <attribute name="is_new" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <attribute name="modified_ts" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="thumb_path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="feed_type" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="FeedType" inverseName="photos" inverseEntity="FeedType" syncable="YES"/>
+        <relationship name="markets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Market" inverseName="photos" inverseEntity="Market" syncable="YES"/>
+        <relationship name="photo_type" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoType" inverseName="photos" inverseEntity="PhotoType" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="photos" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="PhotoType" representedClassName="PhotoType" syncable="YES">
+        <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="YES" indexed="YES" syncable="YES"/>
+        <attribute name="id" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+        <attribute name="label" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="selected" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="photo_type" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="YES" indexed="YES" syncable="YES"/>
+        <attribute name="id" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="selected" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="tags" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FeedType" positionX="-27" positionY="189" width="128" height="120"/>
+        <element name="Market" positionX="369" positionY="189" width="128" height="120"/>
+        <element name="Photo" positionX="160" positionY="192" width="128" height="225"/>
+        <element name="PhotoType" positionX="-36" positionY="363" width="128" height="120"/>
+        <element name="Tag" positionX="369" positionY="384" width="128" height="120"/>
+    </elements>
+</model>
